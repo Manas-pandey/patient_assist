@@ -1,0 +1,27 @@
+
+<form [formGroup]="onboardPatientForm" style="height:50%; width:50%;padding: 25% 0 0 25%">
+  <mat-toolbar color="primary">
+    <span>Onboard Patient</span>
+  </mat-toolbar>
+  <mat-card fxLayout="column" fxLayoutAlign="start start" >
+    <div fxLayout="row">
+      <mat-form-field>
+        <input matInput placeholder="Hospital ID" formControlName="hospitalId">
+      </mat-form-field>
+    </div>
+    <div fxLayout="row">
+      <mat-form-field>
+        <input matInput placeholder="Patient Name" formControlName="patientName">
+      </mat-form-field>
+    </div>
+    <div fxLayout="row">
+      <mat-form-field>
+        <input matInput placeholder="Age" formControlName="age">
+      </mat-form-field>
+    </div>
+    <div fxFlexAlign="stretch" fxLayout="row">
+      <button mat-raised-button color="primary" (click)="onboardPatient()">Submit </button>
+    </div>
+  </mat-card>
+
+</form>

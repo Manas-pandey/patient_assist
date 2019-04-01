@@ -1,0 +1,15 @@
+<div fxLayout="column" style="height: 100%; width: 100%;padding: 50 0 0 50" fxLayoutGap="10px">
+  <mat-card fxLayout="row" style="background: tan" fxLayoutGap="10px"> 
+    <div>
+      <mat-form-field>
+        <input type="text" placeholder="Enter Hospital ID" matInput [(ngModel)]="hospitalId" name="hospitalId">
+      </mat-form-field>
+    </div>
+    <div>
+      <button (click)="renderChart(hospitalId)" mat-raised-button color="primary">Search</button>
+    </div>
+  </mat-card>
+  <mat-card>
+    <div style="width: 50%; height: 50%;" #chart id="chart"></div>
+  </mat-card>
+</div>

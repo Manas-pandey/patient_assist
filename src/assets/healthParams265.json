@@ -1,0 +1,25 @@
+{
+    "hospitalId": "265",
+    "heathParameters": [
+        {
+            "respiratoryRate": "656",
+            "heartRate": "65",
+            "imv": "56",
+            "paCo2": "656",
+            "hCo3": "656",
+            "spO2": "34",
+            "saO2": "656",
+            "time": "56"
+        },
+        {
+            "respiratoryRate": "56",
+            "heartRate": "6",
+            "imv": "65",
+            "paCo2": "66",
+            "hCo3": "65",
+            "spO2": "65",
+            "saO2": "76",
+            "time": "67"
+        }
+    ]
+}

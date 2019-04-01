@@ -1,0 +1,66 @@
+<form>
+  <mat-form-field>
+    <input matInput placeholder="hospitalId" name="hospitalId" type="number" [(ngModel)]="hospitalId">
+  </mat-form-field>
+</form>
+<form [formGroup]="inputForm">
+  <div fxLayout="column" style="width: 100%; height: 100%;">
+    <div formArrayName="heathParameters" fxLayout="column" style="overflow-x: auto;" fxLayoutGap="10px">
+
+      <mat-card fxLayout="row" fxFlexAlign="stretch" fxLayoutAlign="space-between center"
+        *ngFor="let heath of heathParameterArray.controls; let i=index" [formGroupName]="i">
+        <div fxLayout="row wrap" fxFlex="80" fxLayoutAlign="start center" fxLayoutGap="20px">
+          <div>
+            <mat-form-field>
+              <input matInput placeholder="respiratoryRate" type="number" formControlName="respiratoryRate">
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <input matInput placeholder="heartRate" type="number" formControlName="heartRate">
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <input matInput placeholder="imv" type="number" formControlName="imv">
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <input matInput placeholder="paCo2" type="number" formControlName="paCo2">
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <input matInput placeholder="hCo3" type="number" formControlName="hCo3">
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <input matInput placeholder="spO2" type="number" formControlName="spO2">
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <input matInput placeholder="saO2" type="number" formControlName="saO2">
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <input matInput placeholder="time" type="datetime-local" formControlName="time">
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxLayout="column" fxFlex="20" fxLayoutAlign="center center">
+          <button mat-raised-button color="warn" (click)="deleteHeathParameter()">Delete</button>
+        </div>
+      </mat-card>
+      <div fxFlexAlign="stretch" fxLayout="row">
+        <button mat-raised-button color="primary" (click)="addHeathParameter()">Add </button>
+      </div>
+    </div>
+  </div>
+  <div fxFlexAlign="stretch" fxLayout="row" fxLayoutAlign="center center">
+    <button mat-raised-button color="primary" (click)="onSubmit()">Submit </button>
+  </div>
+</form>

@@ -1,0 +1,24 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink='/onboard' class="color-red">Onboard</a>
+      <a mat-list-item routerLink='/search' class="color-red">Search</a>
+      <a mat-list-item routerLink='/input' class="color-red">Input</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content style="padding: 0 5px 0 5px; height: 100%; width: 100%;" fxLayout="column">
+    <div fxFlexAlign="stretch">
+      <mat-toolbar color="primary" style="width: 100%;">
+        <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        <span>Patient Assist</span>
+      </mat-toolbar>
+    </div>
+    <div style="height: calc(100% - 64px); overflow-y: auto;">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

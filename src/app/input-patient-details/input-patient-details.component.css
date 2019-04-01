@@ -1,0 +1,12 @@
+.xs {
+    margin-right: 15px;
+    width: 15%;
+}
+
+.sm {
+    width: 25%;
+}
+
+.warn{
+    background: red
+}

@@ -1,0 +1,45 @@
+{
+    "hospitalId": "278",
+    "heathParameters": [
+        {
+            "respiratoryRate": "656",
+            "heartRate": "65",
+            "imv": "56",
+            "paCo2": "656",
+            "hCo3": "656",
+            "spO2": "34",
+            "saO2": "656",
+            "time": "56"
+        },
+        {
+            "respiratoryRate": "56",
+            "heartRate": "6",
+            "imv": "65",
+            "paCo2": "66",
+            "hCo3": "65",
+            "spO2": "65",
+            "saO2": "76",
+            "time": "66"
+        },
+        {
+            "respiratoryRate": "66",
+            "heartRate": "120",
+            "imv": "52",
+            "paCo2": "65",
+            "hCo3": "26",
+            "spO2": "340",
+            "saO2": "65",
+            "time": "76"
+        },
+        {
+            "respiratoryRate": "560",
+            "heartRate": "69",
+            "imv": "61",
+            "paCo2": "26",
+            "hCo3": "82",
+            "spO2": "20",
+            "saO2": "700",
+            "time": "86"
+        }
+    ]
+}
