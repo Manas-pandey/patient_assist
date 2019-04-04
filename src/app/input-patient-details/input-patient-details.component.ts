@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import { HealthDetailService } from '../health-detail-service.service';
+import { UserServiceService } from '../user-service.service';
 
 
 @Component({
@@ -11,9 +12,11 @@ import { HealthDetailService } from '../health-detail-service.service';
 export class InputPatientDetailsComponent implements OnInit {
 
   inputForm: FormGroup;
-  hospitalId: number
+  hospitalId: number;
+  validhospitalId :boolean = false;
+  response:any;
 
-  constructor(private fb: FormBuilder,private service:HealthDetailService) { }
+  constructor(private fb: FormBuilder,private service:HealthDetailService, private userService:UserServiceService) { }
 
   ngOnInit() {
     this.inputForm = this.fb.group({
@@ -46,6 +49,13 @@ export class InputPatientDetailsComponent implements OnInit {
 
   onSubmit() {
     let details = this.inputForm.value.heathParameters;
+    
+    details.forEach(element => {
+      element.time = new Date(element.time).getTime();
+      element.hospitalId = this.hospitalId;
+      
+    });
+    console.log(details);
     this.service.updateHealthdetails(details).subscribe((res) => {
       console.log(res);
     });
@@ -53,6 +63,17 @@ export class InputPatientDetailsComponent implements OnInit {
 
   deleteHeathParameter(i) {
     this.heathParameterArray.removeAt(i)
+  }
+
+  validaHospitalId(){
+    this.response = this.userService.getPatientHospitalId(this.hospitalId).subscribe((res) => {
+
+      if(res !== null){
+          this.validhospitalId = true
+      }
+    
+    
+      });
   }
 
 }

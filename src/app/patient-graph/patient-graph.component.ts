@@ -18,7 +18,7 @@ export class PatientGraphComponent implements OnInit {
 
   generateChartData(data) {
     this.values = Object.keys(data[0]).filter(key => key.toLowerCase() !== 'time');
-    const chartData = {
+    const chartData: c3.ChartConfiguration = {
       data: {
         json: data,
         keys: {
@@ -26,16 +26,20 @@ export class PatientGraphComponent implements OnInit {
           value: this.values
         },
         type: "line",
-        groups: []
+        groups: [],
+        xFormat: '%Y-%m-%d %H:%M:%S'
       },
-    grid: {
+      grid: {
         y: {
-            lines: [{value:50}]
+          lines: [{ value: 50 }]
         }
-    },
+      },
       axis: {
         x: {
-          type: "category"
+          type: "timeseries",
+          tick: {
+            format: '%Y-%m-%d %H:%M:%S'
+          }
         }
       }
     }
@@ -53,18 +57,30 @@ export class PatientGraphComponent implements OnInit {
   }
 
   renderChart(hospitalId) {
-    this.getPatientData(hospitalId).then((data: {hospitalId: string, heathParameters: any[]}) => {
-      const chartData = this.generateChartData(data.heathParameters);
+    this.getPatientData(hospitalId).then((data: { healthParameters: any[] }) => {
+      data.healthParameters.forEach(item => {
+        const time = new Date(+item.time);
+        item.time = `${time.getFullYear()}-${this.getPadded(time.getMonth() + 1)}-${this.getPadded(time.getDate())} ${time.getHours()}:${time.getMinutes()}:${time.getSeconds()}`;
+        console.log(time, item.time)
+      });
+      const chartData = this.generateChartData(data.healthParameters);
       if (this.chart) {
-        this.chart.load({...chartData.data, unload: true})
+        this.chart.load({ ...chartData.data, unload: true })
       } else {
         console.log(chartData);
         this.chart = c3.generate(chartData);
       }
     })
-    .catch(error => {
-      console.log('Error: ', error);
-    });
+      .catch(error => {
+        console.log('Error: ', error);
+      });
+  }
+
+  getPadded(date) {
+    if (date < 10) {
+      date = '0' + date;
+    }
+    return date;
   }
 
 }
