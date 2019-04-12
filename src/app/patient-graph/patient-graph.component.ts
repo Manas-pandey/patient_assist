@@ -66,6 +66,8 @@ export class PatientGraphComponent implements OnInit {
       });
       const chartData = this.generateChartData(data.healthParameters);
       this.age = data.patientDetails.age;
+      this.getMinMaxValueOfAttributes();
+
       // console.log(data.patientDetails.age)
       if (this.chart) {
         this.chart.load({ ...chartData.data, unload: true })
@@ -86,4 +88,153 @@ export class PatientGraphComponent implements OnInit {
     return date;
   }
 
+
+  getMinMaxValueOfAttributes() {
+    var MinRespRate;
+    var MaxRespRate;
+    var MinHeartRate;
+    var MaxHeartRate;
+    var MinPacO2;
+    var MaxPacO2;
+    var MinSaO2;
+    var MaxSaO2;
+    var MinSpO2;
+    var MaxSpO2;
+    var MinHcO3;
+    var MaxHcO3;
+
+  if ((this.age > 0) && (this.age <= 0.25))
+  {
+      MinRespRate = 30;
+      MaxRespRate = 60;
+      MinHeartRate = 107;
+      MaxHeartRate = 181;
+      MinPacO2 = 38;
+      MaxPacO2 = 42;
+      MinSaO2 = 94;
+      MaxSaO2 = 100;
+      MinSpO2 = 92;
+      MaxSpO2 = 100;
+      MinHcO3 = 22;
+      MaxHcO3 = 28;
+
+
+
 }
+
+else if ((this.age > 0.25) && (this.age <= 1))
+           {
+               MinRespRate = 30;
+               MaxRespRate = 60;
+               MinHeartRate = 90;
+               MaxHeartRate = 160;
+               MinPacO2 = 38;
+               MaxPacO2 = 42;
+               MinSaO2 = 94;
+               MaxSaO2 = 100;
+               MinSpO2 = 92;
+               MaxSpO2 = 100;
+               MinHcO3 = 22;
+               MaxHcO3 = 28;
+
+
+
+         }
+
+else if ((this.age > 1) && (this.age <= 2))
+           {
+               MinRespRate = 22;
+               MaxRespRate = 37;
+               MinHeartRate = 80;
+               MaxHeartRate = 120;
+               MinPacO2 = 38;
+               MaxPacO2 = 42;
+               MinSaO2 = 94;
+               MaxSaO2 = 100;
+               MinSpO2 = 92;
+               MaxSpO2 = 100;
+               MinHcO3 = 22;
+               MaxHcO3 = 28;
+
+
+
+         }
+
+
+else if ((this.age >= 3) && (this.age <= 5))
+           {
+               MinRespRate = 20;
+               MaxRespRate = 28;
+               MinHeartRate = 65;
+               MaxHeartRate = 100;
+               MinPacO2 = 38;
+               MaxPacO2 = 42;
+               MinSaO2 = 94;
+               MaxSaO2 = 100;
+               MinSpO2 = 92;
+               MaxSpO2 = 100;
+               MinHcO3 = 22;
+               MaxHcO3 = 28;
+
+
+
+         }
+
+
+else if ((this.age >= 6) && (this.age <= 11))
+           {
+               MinRespRate = 18;
+               MaxRespRate = 25;
+               MinHeartRate = 58;
+               MaxHeartRate = 90;
+               MinPacO2 = 38;
+               MaxPacO2 = 42;
+               MinSaO2 = 94;
+               MaxSaO2 = 100;
+               MinSpO2 = 92;
+               MaxSpO2 = 100;
+               MinHcO3 = 22;
+               MaxHcO3 = 28;
+
+
+
+         }
+
+else if ((this.age >= 12) && (this.age <= 15))
+           {
+               MinRespRate = 12;
+               MaxRespRate = 20;
+               MinHeartRate = 50;
+               MaxHeartRate = 90;
+               MinPacO2 = 38;
+               MaxPacO2 = 42;
+               MinSaO2 = 94;
+               MaxSaO2 = 100;
+               MinSpO2 = 92;
+               MaxSpO2 = 100;
+               MinHcO3 = 22;
+               MaxHcO3 = 28;
+
+
+
+         }
+
+else (this.age > 15)
+{
+               MinRespRate = 12;
+               MaxRespRate = 20;
+               MinHeartRate = 60;
+               MaxHeartRate = 100;
+               MinPacO2 = 38;
+               MaxPacO2 = 42;
+               MinSaO2 = 94;
+               MaxSaO2 = 100;
+               MinSpO2 = 92;
+               MaxSpO2 = 100;
+               MinHcO3 = 22;
+               MaxHcO3 = 28;
+
+
+
+         }
+         }
