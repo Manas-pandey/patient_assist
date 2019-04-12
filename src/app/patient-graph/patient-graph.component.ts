@@ -42,6 +42,12 @@ export class PatientGraphComponent implements OnInit {
         groups: [],
         xFormat: '%Y-%m-%d %H:%M:%S'
       },
+
+
+      size: {
+           width : 640,
+           height : 480
+      },
       grid: {
         y: {
           lines: [{ value: this.MaxHeartRate , text: 'This color shows the normal range of Heart rate' },
@@ -220,4 +226,12 @@ export class PatientGraphComponent implements OnInit {
     }
   }
 
+
+  getWeaningPrediction()
+  {
+
+
+
+
+}
 }
