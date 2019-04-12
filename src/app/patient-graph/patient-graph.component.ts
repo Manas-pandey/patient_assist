@@ -50,7 +50,7 @@ export class PatientGraphComponent implements OnInit {
       },
       grid: {
         y: {
-          lines: [{ value: this.MaxHeartRate , text: 'This color shows the normal range of Heart rate' },
+          lines: [{ value: this.MaxHeartRate, text: 'This color shows the normal range of Heart rate' },
                   { value: this.MaxRespRate, text: 'This color shows the normal range of Resp rate' },
                   { value: this.MaxPacO2, text: 'This color shows the normal range of PaCO2' },
                   { value: this.MaxSaO2, text: 'This color shows the normal range of SaO2'  },
