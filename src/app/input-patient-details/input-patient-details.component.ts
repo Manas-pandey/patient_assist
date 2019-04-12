@@ -11,7 +11,7 @@ import { UserServiceService } from '../user-service.service';
 })
 export class InputPatientDetailsComponent implements OnInit {
 
-  inputForm: FormGroup;
+  inputForm: FormGroup; // hfgfh
   hospitalId: number;
   validhospitalId :boolean = false;
   response:any;
