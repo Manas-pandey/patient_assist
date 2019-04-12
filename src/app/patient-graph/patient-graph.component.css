@@ -1,0 +1,18 @@
+.c3-region.regionX {
+  fill: red;
+}
+.c3-region.regionY {
+  fill: green;
+}
+.c3-region.regionZ {
+  fill: blue;
+}
+.c3-region.regionX1 {
+  fill: yellow;
+}
+.c3-region.regionY1 {
+  fill: grey;
+}
+.c3-region.regionZ1 {
+  fill: pink;
+}
