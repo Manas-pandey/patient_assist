@@ -37,6 +37,7 @@ export class InputPatientDetailsComponent implements OnInit {
       hospitalId: this.hospitalId,
       heartRate: [],
       imv: [],
+      sponBreath: [],
       paCo2: [],
       hCo3: [],
       spO2: [],
@@ -77,5 +78,3 @@ export class InputPatientDetailsComponent implements OnInit {
   }
 
 }
-
-

@@ -9,6 +9,7 @@ import * as c3 from 'c3';
 })
 export class PatientGraphComponent implements OnInit {
   private chart;
+  public age:number;
   public hospitalId;
   public values = [];
   constructor(private healthService: HeathParameterServiceService) { }
@@ -57,13 +58,15 @@ export class PatientGraphComponent implements OnInit {
   }
 
   renderChart(hospitalId) {
-    this.getPatientData(hospitalId).then((data: { healthParameters: any[] }) => {
+    this.getPatientData(hospitalId).then((data: { healthParameters: any[] , patientDetails: any}) => {
       data.healthParameters.forEach(item => {
         const time = new Date(+item.time);
         item.time = `${time.getFullYear()}-${this.getPadded(time.getMonth() + 1)}-${this.getPadded(time.getDate())} ${time.getHours()}:${time.getMinutes()}:${time.getSeconds()}`;
         console.log(time, item.time)
       });
       const chartData = this.generateChartData(data.healthParameters);
+      this.age = data.patientDetails.age;
+      // console.log(data.patientDetails.age)
       if (this.chart) {
         this.chart.load({ ...chartData.data, unload: true })
       } else {
