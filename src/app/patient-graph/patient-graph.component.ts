@@ -10,6 +10,7 @@ import * as c3 from 'c3';
 export class PatientGraphComponent implements OnInit {
   private chart;
   public age: number;
+  private isWheening: boolean = false;
   private MinRespRate: number;
   private MaxRespRate: number;
   private MinHeartRate: number;
@@ -100,6 +101,7 @@ export class PatientGraphComponent implements OnInit {
       });
       this.age = data.patientDetails.age;
       this.getMinMaxValueOfAttributes();
+      const latestData: HealthParameter = data.healthParameters[0] || null;
       const chartData = this.generateChartData(data.healthParameters);
       // console.log(data.patientDetails.age)
       if (this.chart) {
@@ -209,7 +211,7 @@ export class PatientGraphComponent implements OnInit {
       this.MinHcO3 = 22;
       this.MaxHcO3 = 28;
     }
-    else (this.age > 15)
+    else
     {
       this.MinRespRate = 12;
       this.MaxRespRate = 20;
@@ -226,12 +228,22 @@ export class PatientGraphComponent implements OnInit {
     }
   }
 
-
-  getWeaningPrediction()
+  setWheeningParam(healthParameter :HealthParameter)
   {
-
-
-
+    this.isWheening = true
+  }
 
 }
+
+export interface HealthParameter {
+  hospitalId: number;
+  respiratoryRate: number;
+  heartRate: number;
+  imv: number;
+  sponBreath: number;
+  paCo2: number;
+  hCo3: number;
+  spO2: number;
+  saO2: number;
+  time: string;
 }
