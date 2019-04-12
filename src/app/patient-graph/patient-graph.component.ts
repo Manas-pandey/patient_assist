@@ -44,9 +44,25 @@ export class PatientGraphComponent implements OnInit {
       },
       grid: {
         y: {
-          lines: [{ value: this.MaxHeartRate }]
+          lines: [{ value: this.MaxHeartRate , text: 'This color shows the normal range of Heart rate' },
+                  { value: this.MaxRespRate, text: 'This color shows the normal range of Resp rate' },
+                  { value: this.MaxPacO2, text: 'This color shows the normal range of PaCO2' },
+                  { value: this.MaxSaO2, text: 'This color shows the normal range of SaO2'  },
+                  { value: this.MaxSpO2, text: 'This color shows the normal range of SpO2'  },
+                  { value: this.MaxHcO3, text: 'This color shows the normal range of HcO3'  }
+          ]
         }
       },
+
+
+      regions: [
+                  {axis: 'y', start: this.MinRespRate, end: this.MaxRespRate, class: 'regionX'},
+                  {axis: 'y', start: this.MinHeartRate, end: this.MaxHeartRate, class: 'regionY'},
+                  {axis: 'y', start: this.MinPacO2, end: this.MaxPacO2, class: 'regionZ'},
+                  {axis: 'y', start: this.MinSaO2, end: this.MaxSaO2, class: 'regionX1'},
+                  {axis: 'y', start: this.MinSpO2, end: this.MaxSpO2, class: 'regionY1'},
+                  {axis: 'y', start: this.MinHcO3, end: this.MaxHcO3, class: 'regionZ1'}
+      ],
       axis: {
         x: {
           type: "timeseries",
