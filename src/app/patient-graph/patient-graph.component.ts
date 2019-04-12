@@ -92,10 +92,9 @@ export class PatientGraphComponent implements OnInit {
         item.time = `${time.getFullYear()}-${this.getPadded(time.getMonth() + 1)}-${this.getPadded(time.getDate())} ${time.getHours()}:${time.getMinutes()}:${time.getSeconds()}`;
         console.log(time, item.time)
       });
-      const chartData = this.generateChartData(data.healthParameters);
       this.age = data.patientDetails.age;
       this.getMinMaxValueOfAttributes();
-
+      const chartData = this.generateChartData(data.healthParameters);
       // console.log(data.patientDetails.age)
       if (this.chart) {
         this.chart.load({ ...chartData.data, unload: true })
