@@ -101,7 +101,8 @@ export class PatientGraphComponent implements OnInit {
       });
       this.age = data.patientDetails.age;
       this.getMinMaxValueOfAttributes();
-      const latestData: HealthParameter = data.healthParameters[0] || null;
+      // const latestData: HealthParameter = data.healthParameters[0] || null;
+      this.setWheeningParam(data.healthParameters)
       const chartData = this.generateChartData(data.healthParameters);
       // console.log(data.patientDetails.age)
       if (this.chart) {
@@ -228,12 +229,21 @@ export class PatientGraphComponent implements OnInit {
     }
   }
 
-  setWheeningParam(healthParameter :HealthParameter)
+  setWheeningParam(healthParameterArray)
   {
-    this.isWheening = true
+    for (var j = 0; j < healthParameterArray.length; j++){
+      if(j > 2){
+        break
+      }
+      if (healthParameterArray[j].respiratoryRate >= this.MinHeartRate && healthParameterArray[j].respiratoryRate<=this.MaxHeartRate)
+      {
+        this.isWheening = true;
+      }
+    }
   }
 
 }
+
 
 export interface HealthParameter {
   hospitalId: number;
