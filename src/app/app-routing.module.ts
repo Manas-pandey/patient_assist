@@ -8,11 +8,11 @@ import { AppComponent } from './app.component';
 const routes: Routes = [
   {path:'onboard', component:OnboardPatientComponent},
   {path:'search', component:PatientGraphComponent},
-  {path:'input', component:InputPatientDetailsComponent}
+  {path:'input', component:InputPatientDetailsComponent,runGuardsAndResolvers: 'always'}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

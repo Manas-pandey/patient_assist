@@ -16,3 +16,8 @@
 ::ng-deep.c3-region.regionZ1 {
   fill: pink;
 }
+
+::ng-deep.mat-chip-category { 
+  background-color: #346cb0;
+  color: white;
+}

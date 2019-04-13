@@ -11,6 +11,7 @@ export class PatientGraphComponent implements OnInit {
   private chart;
   public age: number;
   private isWeaning: boolean = false;
+  private dataFound =  false;
   private takeoffMach = false;
   private MinRespRate: number;
   private MaxRespRate: number;
@@ -95,6 +96,7 @@ export class PatientGraphComponent implements OnInit {
 
   renderChart(hospitalId) {
     this.getPatientData(hospitalId).then((data: { healthParameters: any[], patientDetails: any }) => {
+      this.dataFound = true
       data.healthParameters.forEach(item => {
         const time = new Date(+item.time);
         item.time = `${time.getFullYear()}-${this.getPadded(time.getMonth() + 1)}-${this.getPadded(time.getDate())} ${time.getHours()}:${time.getMinutes()}:${time.getSeconds()}`;

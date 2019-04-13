@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import { HealthDetailService } from '../health-detail-service.service';
 import { UserServiceService } from '../user-service.service';
+import {MatSnackBar} from '@angular/material';
+import { ActivatedRoute, Router } from '@angular/router';
+
+
 
 
 @Component({
@@ -16,7 +20,8 @@ export class InputPatientDetailsComponent implements OnInit {
   validhospitalId :boolean = false;
   response:any;
 
-  constructor(private fb: FormBuilder,private service:HealthDetailService, private userService:UserServiceService) { }
+
+  constructor(private fb: FormBuilder,private service:HealthDetailService, private userService:UserServiceService,public snackBar: MatSnackBar,private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.inputForm = this.fb.group({
@@ -59,6 +64,12 @@ export class InputPatientDetailsComponent implements OnInit {
     console.log(details);
     this.service.updateHealthdetails(details).subscribe((res) => {
       console.log(res);
+      this.openSnackBar("Health deatils saved !!","End");
+      console.log('snackbar')
+      // this.router.navigate(['/input'])
+      this.onRefresh();
+      console.log('route')
+      
     });
   }
 
@@ -71,10 +82,27 @@ export class InputPatientDetailsComponent implements OnInit {
 
       if(res !== null){
           this.validhospitalId = true
-      }
-    
-    
+      }  
       });
   }
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+      // verticalPosition: 'top',
+      // horizontalPosition: 'end',
+      // panelClass: ['green-snackbar'],
 
+    });
+  }
+  onRefresh() {
+    this.router.routeReuseStrategy.shouldReuseRoute = function(){return false;};
+  
+    let currentUrl = this.router.url ;
+  
+    this.router.navigateByUrl(currentUrl)
+      .then(() => {
+        this.router.navigated = false;
+        this.router.navigate([this.router.url]);
+      });
+    }
 }

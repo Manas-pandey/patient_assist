@@ -12,4 +12,14 @@
   <mat-card>
     <div style="width: 50%; height: 50%;" #chart id="chart"></div>
   </mat-card>
+  <div>
+    <mat-chip-list *ngIf="isWeaning && dataFound" >
+      <mat-chip color="warn" selected="true">Ready to Wheene</mat-chip>
+    </mat-chip-list>
+  </div>
+  <div>
+    <mat-chip-list *ngIf="!isWeaning && dataFound" >
+      <mat-chip color="warn" selected="true">Not Ready to Wheene </mat-chip>
+    </mat-chip-list>
+  </div>
 </div>

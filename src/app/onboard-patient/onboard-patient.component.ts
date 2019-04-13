@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
+import { UserServiceService } from '../user-service.service';
 
 
 @Component({
@@ -11,19 +12,25 @@ export class OnboardPatientComponent implements OnInit {
 
   onboardPatientForm :FormGroup;
 
-  constructor(private fb :FormBuilder) { }
+  constructor(private fb :FormBuilder,private userService:UserServiceService) { }
 
   ngOnInit() {
     this.onboardPatientForm = this.fb.group({
-      hospitalId : '',
-      patientName:'',
+      patientLastName : '',
+      patientFirstName:'',
       age: ''
      } );
   }
 
   onboardPatient()
   {
-    console.log(this.onboardPatientForm);
+    console.log(this.onboardPatientForm.value);
+    console.log("Inside OnboardPatientComponent")
+    this.userService.onboardPatient(this.onboardPatientForm.value).subscribe(
+      res => {
+        console.log("done")
+      }
+    )
   }
 
 }
