@@ -244,21 +244,26 @@ export class PatientGraphComponent implements OnInit {
         this.isWeaning = true;
       }
 
-      if (healthParameterArray[j].imv == 0)
+
+
+
+
+}
+}
+
+setTakeOffParam(healthParameterArray)
+  {
+    for (var i = 0; i < healthParameterArray.length; i++){
+      if (i > 3){
+      break
+      }
+      if ((healthParameterArray[i].respiratoryRate >= this.MinRespRate) && (healthParameterArray[i].respiratoryRate<=this.MaxRespRate)
+                     && (healthParameterArray[i].heartRate >= this.MinHeartRate ) && (healthParameterArray[i].heartRate <= this.MaxHeartRate) && (healthParameterArray[j].imv == 0))
       {
       this.takeoffMach = true;
     }
   }
-//  console.log(this.isWeaning);
-
 }
-
-
-
-
-
-}
-
 
 export interface HealthParameter {
   hospitalId: number;
