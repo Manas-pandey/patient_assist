@@ -10,7 +10,8 @@ import * as c3 from 'c3';
 export class PatientGraphComponent implements OnInit {
   private chart;
   public age: number;
-  private isWheening: boolean = false;
+  private isWeaning: boolean = false;
+  private takeoffMach = false;
   private MinRespRate: number;
   private MaxRespRate: number;
   private MinHeartRate: number;
@@ -102,7 +103,7 @@ export class PatientGraphComponent implements OnInit {
       this.age = data.patientDetails.age;
       this.getMinMaxValueOfAttributes();
       // const latestData: HealthParameter = data.healthParameters[0] || null;
-      this.setWheeningParam(data.healthParameters)
+      this.setWeaningParam(data.healthParameters)
       const chartData = this.generateChartData(data.healthParameters);
       // console.log(data.patientDetails.age)
       if (this.chart) {
@@ -228,19 +229,33 @@ export class PatientGraphComponent implements OnInit {
       this.MaxHcO3 = 28;
     }
   }
+           //   console.log(isWeaning);
 
-  setWheeningParam(healthParameterArray)
+
+  setWeaningParam(healthParameterArray)
   {
     for (var j = 0; j < healthParameterArray.length; j++){
       if(j > 2){
         break
       }
-      if (healthParameterArray[j].respiratoryRate >= this.MinHeartRate && healthParameterArray[j].respiratoryRate<=this.MaxHeartRate)
+      if (((healthParameterArray[j].respiratoryRate >= this.MinRespRate) && (healthParameterArray[j].respiratoryRate<=this.MaxRespRate)
+            && (healthParameterArray[j].heartRate >= this.MinHeartRate ) && (healthParameterArray[j].heartRate <= this.MaxHeartRate)) || (healthParameterArray[j].sponBreath >0))
       {
-        this.isWheening = true;
+        this.isWeaning = true;
       }
+
+      if (healthParameterArray[j].imv == 0)
+      {
+      this.takeoffMach = true;
     }
   }
+//  console.log(this.isWeaning);
+
+}
+
+
+
+
 
 }
 
